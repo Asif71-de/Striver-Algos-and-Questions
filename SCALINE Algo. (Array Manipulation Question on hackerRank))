@@ -1,0 +1,30 @@
+// In Scaline Algorithm we are giving queries Like.
+index 2 - 4 -> add 2
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e7+10;
+long long int arr[N];
+int main() {
+   int n, q;
+   cin >> n >> q;
+   while(q--) {
+      int a, b, d;
+      cin >> a >> b >> d;
+      arr[a] += d;
+      arr[b+1] -= d;
+   }
+   for(int i=1; i<=n; i++) {
+      arr[i] += arr[i-1];
+   }
+   long long int mx = -1;
+   for(int i=1; i<=n; i++) {
+      if(arr[i]>mx) {
+        mx = arr[i];
+      }
+   }
+   cout << mx <<endl;
+}
