@@ -1,0 +1,32 @@
+
+
+TIME COMPLEXITY -> O(n)
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n, k;
+    cin >> n >> k;
+    int arr[n];
+    for(int i=0; i<n; i++) {
+       cin >> arr[i];
+    }
+    int preSum[n];
+    preSum[0] = arr[0];
+    for(int i=1; i<n; i++) {
+         preSum[i] = arr[i]+preSum[i-1];
+    }
+   
+    int sum = 0;
+    int ans = -1;
+    for(int i=0; i<n-k; i++) {
+        int L = i;
+        int R = i+k-1;
+        sum = preSum[R];
+        if(L>0) sum -= preSum[L-1];
+
+        ans = max(sum, ans); 
+    }
+
+    cout << ans << endl;
+}
