@@ -1,0 +1,25 @@
+Time Complexity -> O(n^3)
+#include<bits/stdc++.h>
+using namespace std;
+void print(int arr[], int s, int e) {
+   
+    for(int i=s; i<=e; i++) {
+        cout << arr[i] << " "; 
+    }
+    cout<<"\n";
+   
+}
+
+void subarray(int arr[], int n) {
+    for(int s=0; s<n; s++) {
+        for(int e = s; e<n; e++) {
+            print(arr, s, e);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {1,2,3,4,5};
+    int n = 5;
+    subarray(arr, n); 
+}
